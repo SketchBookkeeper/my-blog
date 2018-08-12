@@ -1,7 +1,8 @@
 //--------------------------------------------------------------
-// STYLES ENTRY POINT
+// Elements
 //--------------------------------------------------------------
-
-@import 'variables';
-@import 'reset';
-@import 'elements';
+body {
+	background: $color-black;
+	color: $color-white;
+	font-family: 'Nunito Sans', sans-serif;
+}
