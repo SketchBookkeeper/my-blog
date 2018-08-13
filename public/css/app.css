@@ -141,3 +141,9 @@ body {
   font-family: 'Nunito Sans', sans-serif;
 }
 
+.l-wrapper {
+  margin: 0 auto;
+  max-width: 1040px;
+  padding: 0 20px;
+}
+

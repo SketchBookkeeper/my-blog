@@ -20,7 +20,7 @@
 </header>
 
 <body>
-    <main>
+    <main class="l-wrapper">
         @yield('content')
     </main>
 </body>

@@ -1,10 +1,8 @@
 //--------------------------------------------------------------
-// STYLES ENTRY POINT
+// WRAPPER
 //--------------------------------------------------------------
-@import 'mixins/index';
-
-@import 'variables';
-@import 'reset';
-@import 'elements';
-
-@import 'layout/index';
+.l-wrapper {
+	margin: 0 auto;
+	max-width: $global-width + 40px;
+	padding: 0 20px;
+}
