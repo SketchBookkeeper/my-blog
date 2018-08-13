@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('posts.index');
-});
+Route::get('/', 'PostsController@index');
 
 Auth::routes();
 
