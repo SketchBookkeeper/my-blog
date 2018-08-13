@@ -11,6 +11,12 @@ class Post extends Model
 
     protected $guarded = [];
 
+    // Set defaults for some values
+    protected $attributes = [
+        'excerpt' => '',
+        'body' => 'Hello World'
+    ];
+
     // @link https://github.com/cviebrock/eloquent-sluggable
     public function sluggable()
     {
