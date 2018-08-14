@@ -4,6 +4,10 @@
     @foreach($posts as $post)
 
         @component('components.post_card')
+            @slot('slug')
+                {{ $post->slug }}
+            @endslot
+
             @slot('title')
                 {{ $post->title }}
             @endslot

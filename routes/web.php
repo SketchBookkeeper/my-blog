@@ -11,10 +11,11 @@
 |
 */
 
-Route::get('/', 'PostsController@index');
-
+Route::get('/', 'PostsController@index')->name('home');
 Route::get('/posts/{post}', 'PostsController@show');
+Route::get('/admin/create/post', 'PostsController@create');
+Route::post('/admin/store/post', 'PostsController@store');
 
-Auth::routes();
+// Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index');
