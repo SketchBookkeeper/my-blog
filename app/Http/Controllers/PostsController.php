@@ -17,7 +17,7 @@ class PostsController extends Controller
     {
         $posts = DB::table('posts')
             ->latest()
-            ->paginate(1);
+            ->paginate(5);
 
         return view('posts.index', compact('posts'));
     }

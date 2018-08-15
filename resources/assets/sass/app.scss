@@ -1,10 +1,14 @@
 //--------------------------------------------------------------
 // STYLES ENTRY POINT
 //--------------------------------------------------------------
+// Bootstrap
+@import '~bootstrap/scss/bootstrap-grid';
+
 @import 'mixins/index';
 
 @import 'variables';
 @import 'reset';
 @import 'elements';
+@import 'forms';
 
 @import 'layout/index';
