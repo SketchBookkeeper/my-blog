@@ -11,11 +11,16 @@
 |
 */
 
+// Frontend
 Route::get('/', 'PostsController@index')->name('home');
 Route::get('/posts/{post}', 'PostsController@show');
+
+// Backend
 Route::get('/admin/create/post', 'PostsController@create');
 Route::post('/admin/store/post', 'PostsController@store');
 
-// Auth::routes();
+Route::get('/admin/tags', 'TagsController@create');
+Route::post('/admin/store/tag', 'TagsController@store');
+
 
 // Route::get('/home', 'HomeController@index');
