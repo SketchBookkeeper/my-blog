@@ -23,7 +23,18 @@
             </div>
 
             <div class="col-sm-12 col-md-3">
-                <!-- Tags -->
+                <p>Tags</p>
+
+                @foreach($tags as $tag)
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="tags[]" value="{{ $tag->id }}" id="tag-{{ $tag->name }}">
+                        <label class="form-check-label" for="defaultCheck1">
+                            {{ $tag->name }}
+                        </label>
+                    </div>
+
+                @endforeach
             </div>
         </div>
 

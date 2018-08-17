@@ -34,9 +34,11 @@
     </ul>
 
     <div class="card">
-        <div class="card-body">
-            <h4>Add a Tag</h4>
+        <div class="card-header">
+            Add Tag
+        </div>
 
+        <div class="card-body">
             <form method="POST" action="/admin/store/tag">
                 {{ csrf_field() }}
 
