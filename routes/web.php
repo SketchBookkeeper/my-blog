@@ -21,6 +21,6 @@ Route::post('/admin/store/post', 'PostsController@store');
 
 Route::get('/admin/tags', 'TagsController@create');
 Route::post('/admin/store/tag', 'TagsController@store');
-
+Route::delete('/admin/delete/tag', 'TagsController@destroy');
 
 // Route::get('/home', 'HomeController@index');

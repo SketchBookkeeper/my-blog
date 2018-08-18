@@ -19,8 +19,10 @@
                         <div class="col-sm-4 d-flex justify-content-end">
                             <a href="/admin/edit/tag/{{ $tag->id }}" class="btn btn-sm btn-outline-primary mr-2">Edit</a>
 
-                            <form action="/admin/delete/tag/{{ $tag->id }}">
+                            <form action="/admin/delete/tag" method="POST">
+                                @method('DELETE')
                                 {{ csrf_field() }}
+                                <input type="hidden" name="id" value="{{ $tag->id }}">
 
                                 <button class="btn btn-sm btn-outline-danger">Delete</button>
                             </form>
