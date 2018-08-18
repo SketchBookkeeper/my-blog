@@ -52,7 +52,7 @@
 
                     <div class="form-group col-sm-2">
                         <label for="tag-color">Tag Color</label>
-                        <input type="color" id="tag-color" name="color" class="form-control">
+                        <input type="color" id="tag-color" name="color" value="#A52422" class="form-control">
                     </div>
                 </div>
 
