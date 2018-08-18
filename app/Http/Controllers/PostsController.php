@@ -37,6 +37,11 @@ class PostsController extends Controller
         return view('posts.create', compact('tags'));
     }
 
+    public function edit(Post $post)
+    {
+        return 'edit post';
+    }
+
     public function store()
     {
         $this->validate(request(), [

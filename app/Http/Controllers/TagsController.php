@@ -71,19 +71,30 @@ class TagsController extends Controller
      */
     public function edit(Tag $tag)
     {
-        //
+        return view('tags.edit', compact('tag'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tag $tag)
+    public function update(Request $request)
     {
-        //
+        $this->validate(request(), [
+            'name' => 'required',
+            'color' => 'required'
+        ]);
+
+        $tag = Tag::find(request('id'));
+
+        $tag->name = request('name');
+        $tag->color = request('color');
+
+        $tag->save();
+
+        return redirect('/admin/tags');
     }
 
     /**
@@ -95,6 +106,7 @@ class TagsController extends Controller
     {
         $tag = Tag::find(request('id'));
 
+        // This will remove all reference of this tag in the post_tag pivot table
         Tag::deleting(function ($tag)
         {
             $tag->posts()->detach();
