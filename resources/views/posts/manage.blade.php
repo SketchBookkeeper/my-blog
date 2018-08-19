@@ -34,7 +34,7 @@
                             }}
                         </h6>
 
-                        <div>
+                        <div class="mb-2">
                             @foreach($post['tags'] as $tag)
                                 <span class="badge" style="background-color: {{ $tag['color'] }};">
                                     {{ $tag['name'] }}
@@ -46,7 +46,7 @@
                             <p class="card-text">{{ $post['excerpt'] }}</p>
                         @endif
 
-                        <a href="/admin/edit/post/{{ $post['title'] }}" class="card-link">Edit</a>
+                        <a href="/admin/edit/post/{{ $post['slug'] }}" class="card-link">Edit</a>
                     </div>
                 </div>
 
