@@ -8,27 +8,27 @@
         @foreach($tags as $tag)
 
             <li class="list-group-item">
-                <div class="container">
-                    <div class="row flex-nowrap">
-                        <div class="col-sm-1 rounded" style="background: {{ $tag->color }}"></div>
 
-                        <div class="col-sm-7 d-flex align-items-center">
-                            <span>{{ $tag->name }}</span>
-                        </div>
+                <div class="row flex-nowrap">
+                    <div class="col-sm-1 rounded" style="background: {{ $tag->color }}"></div>
 
-                        <div class="col-sm-4 d-flex justify-content-end">
-                            <a href="/admin/edit/tag/{{ $tag->name }}" class="btn btn-sm btn-outline-primary mr-2">Edit</a>
+                    <div class="col-sm-7 d-flex align-items-center">
+                        <span>{{ $tag->name }}</span>
+                    </div>
 
-                            <form action="/admin/delete/tag" method="POST">
-                                @method('DELETE')
-                                {{ csrf_field() }}
-                                <input type="hidden" name="id" value="{{ $tag->id }}">
+                    <div class="col-sm-4 d-flex justify-content-end">
+                        <a href="/admin/edit/tag/{{ $tag->name }}" class="btn btn-sm btn-outline-primary mr-2">Edit</a>
 
-                                <button class="btn btn-sm btn-outline-danger">Delete</button>
-                            </form>
-                        </div>
+                        <form action="/admin/delete/tag" method="POST">
+                            @method('DELETE')
+                            {{ csrf_field() }}
+                            <input type="hidden" name="id" value="{{ $tag->id }}">
+
+                            <button class="btn btn-sm btn-outline-danger">Delete</button>
+                        </form>
                     </div>
                 </div>
+
             </li>
 
         @endforeach

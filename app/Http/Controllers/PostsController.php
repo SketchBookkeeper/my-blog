@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Pagination\LengthAwarePaginator;
 use \App\Post;
 use \App\Tag;
 
@@ -14,11 +15,11 @@ class PostsController extends Controller
         // $this->middleware('auth')->except(['index', 'show']);
     }
 
-    public function index()
+    public function index($per_page)
     {
         $posts = DB::table('posts')
             ->latest()
-            ->paginate(5);
+            ->paginate($per_page);
 
         return view('posts.index', compact('posts'));
     }
@@ -28,6 +29,40 @@ class PostsController extends Controller
         $post = Post::find($post);
 
         return $post;
+    }
+
+    public function manage(Request $request)
+    {
+        // Paginating with Pivot Table data can be tricky.
+        // We need to call ::with on the Post Model to get the posts
+        // and their tags.
+        $all_posts = Post::with('tags')
+        ->latest()
+        ->get()
+        ->toArray();
+
+        // Handle a page parameter if given.
+        $page = 1;
+        //
+        if ($request->input('page') && is_numeric($request->input('page'))) {
+            $page = $request->input('page');
+        }
+
+        // Get how many items we need to offset by.
+        // Take page and multiple it by desired per page count,
+        // then minus per page count, leaving the items that will show
+        // on that page.
+        $offset_count = ($page * 9) - 9;
+
+        // Slice out the posts that will be passed to the Paginator
+        $selected_posts = array_slice($all_posts, $offset_count, 9);
+
+        $posts = new LengthAwarePaginator($selected_posts, count($all_posts), 9, $page);
+
+        // Set the custom pagination url
+        $posts->withPath('/admin/posts');
+
+        return view('posts.manage', compact('posts'));
     }
 
     public function create()
@@ -58,6 +93,6 @@ class PostsController extends Controller
         // Add Tags to the post
         $post->tags()->sync(request('tags'));
 
-        return redirect()->home();
+        return redirect('/admin/posts');
     }
 }

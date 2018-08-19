@@ -12,15 +12,18 @@
 */
 
 // Frontend
-Route::get('/', 'PostsController@index')->name('home');
+Route::get('/', function () {
+    return (new \App\Http\Controllers\PostsController)->index(5);
+})->name('home');
 Route::get('/posts/{post}', 'PostsController@show');
 
 // Backend
+Route::get('/admin/posts', 'PostsController@manage');
 Route::get('/admin/create/post', 'PostsController@create');
 Route::get('/admin/edit/post/{post}', 'PostsController@edit');
 Route::post('/admin/store/post', 'PostsController@store');
 
-Route::get('/admin/tags', 'TagsController@create');
+Route::get('/admin/tags', 'TagsController@manage');
 Route::get('/admin/edit/tag/{tag}', 'TagsController@edit');
 Route::post('/admin/store/tag', 'TagsController@store');
 Route::post('/admin/update/tag', 'TagsController@update');

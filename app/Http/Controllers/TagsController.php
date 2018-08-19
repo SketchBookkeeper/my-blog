@@ -19,6 +19,13 @@ class TagsController extends Controller
         return view('posts.index', compact('posts'));
     }
 
+    public function manage()
+    {
+        $tags = Tag::get();
+
+        return view('tags.manage', compact('tags'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -26,9 +33,7 @@ class TagsController extends Controller
      */
     public function create()
     {
-        $tags = Tag::get();
 
-        return view('tags.manage', compact('tags'));
     }
 
     /**
