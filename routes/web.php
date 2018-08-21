@@ -22,6 +22,7 @@ Route::get('/admin/posts', 'PostsController@manage');
 Route::get('/admin/create/post', 'PostsController@create');
 Route::get('/admin/edit/post/{post}', 'PostsController@edit');
 Route::post('/admin/store/post', 'PostsController@store');
+Route::post('/admin/update/post', 'PostsController@update');
 
 Route::get('/admin/tags', 'TagsController@manage');
 Route::get('/admin/edit/tag/{tag}', 'TagsController@edit');

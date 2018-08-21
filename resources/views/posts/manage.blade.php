@@ -29,7 +29,7 @@
                             <span>Updated</span>
                             {{
                                 \Carbon\Carbon::createFromTimeStamp(
-                                    strtotime( $post['created_at'] )
+                                    strtotime( $post['updated_at'] )
                                 )->diffForHumans()
                             }}
                         </h6>

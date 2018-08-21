@@ -74,7 +74,37 @@ class PostsController extends Controller
 
     public function edit(Post $post)
     {
-        return 'edit post';
+        $tags = Tag::get();
+        $active_tags = $post
+            ->tags
+            ->pluck('name')
+            ->toArray();
+
+        return view('posts.edit', compact('post', 'tags', 'active_tags'));
+    }
+
+    public function update()
+    {
+        $this->validate(request(), [
+            'title' => 'required',
+            'body' => 'required',
+            'id' => 'required'
+        ]);
+
+        $post = Post::find(request('id'));
+
+        // Rerun sluggable for new title
+        $post->slug = null;
+        $post->update(['title' => request('title')]);
+        $post->excerpt = request('excerpt');
+        $post->body = request('body');
+
+        $post->touch();
+        $post->save();
+
+        $post->tags()->sync(request('tags'));
+
+        return redirect("/admin/edit/post/$post->slug");
     }
 
     public function store()
