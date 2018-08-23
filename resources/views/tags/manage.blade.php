@@ -24,7 +24,7 @@
                             {{ csrf_field() }}
                             <input type="hidden" name="id" value="{{ $tag->id }}">
 
-                            <button class="btn btn-sm btn-outline-danger">Delete</button>
+                            <button type="submit" class="btn btn-sm btn-outline-danger">Delete</button>
                         </form>
                     </div>
                 </div>

@@ -125,4 +125,18 @@ class PostsController extends Controller
 
         return redirect('/admin/posts');
     }
+
+    public function destroy()
+    {
+        $post = Post::find(request('id'));
+
+        Post::deleting(function ($post)
+        {
+            $post->tags()->detach();
+        });
+
+        Post::destroy($post->id);
+
+        return redirect('/admin/posts');
+    }
 }

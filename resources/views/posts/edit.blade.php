@@ -3,7 +3,7 @@
 @section ('content')
     @include('admin-partials.errors')
 
-    <form method="POST" action="/admin/update/post">
+    <form method="POST" action="/admin/update/post" class="mb-4">
         {{ csrf_field() }}
 
         <input type="hidden" name="id" value="{{ $post->id }}">
@@ -51,5 +51,15 @@
         </div>
 
         <button type="submit" class="btn btn-outline-primary">Update</button>
+    </form>
+
+    <h3>Delete Post</h3>
+
+    <form action="/admin/delete/post" method="POST">
+        @method('DELETE')
+        {{ csrf_field() }}
+        <input type="hidden" name="id" value="{{ $post->id }}">
+
+        <button class="btn btn-sm btn-outline-danger">Delete {{ $post->title }}</button>
     </form>
 @endsection
