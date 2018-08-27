@@ -104,7 +104,7 @@ class PostsController extends Controller
 
         $post->tags()->sync(request('tags'));
 
-        return redirect("/admin/edit/post/$post->slug");
+        return redirect("/admin/edit/post/$post->slug")->with('message', 'Post Updated');
     }
 
     public function store()

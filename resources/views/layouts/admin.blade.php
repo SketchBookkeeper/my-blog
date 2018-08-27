@@ -29,5 +29,7 @@
     </main>
 
     @include('admin-partials.errors')
+
+    @include('admin-partials.messages')
 </body>
 </html>
