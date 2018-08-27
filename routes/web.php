@@ -31,4 +31,6 @@ Route::post('/admin/store/tag', 'TagsController@store');
 Route::post('/admin/update/tag', 'TagsController@update');
 Route::delete('/admin/delete/tag', 'TagsController@destroy');
 
-// Route::get('/home', 'HomeController@index');
+Route::get('/login', 'SessionsController@create')->name('login');
+Route::get('/logout', 'SessionsController@destroy');
+Route::post('/login', 'SessionsController@store');
