@@ -36,6 +36,11 @@ class TagsController extends Controller
 
     }
 
+    public function show()
+    {
+
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -44,6 +49,15 @@ class TagsController extends Controller
      */
     public function store(Request $request)
     {
+        // First check if a tag with this name already exists.
+        $duplicate = Tag::where('name', '=', request('name'))->first();
+
+        if ($duplicate) {
+            return back()->withErrors([
+                'message' => 'That tag name is already taken, please pick something else.'
+            ]);
+        }
+
         $this->validate(request(), [
             'name' => 'required',
             'color' => 'required'
@@ -57,16 +71,6 @@ class TagsController extends Controller
         return back();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Tag  $tag
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Tag $tag)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
