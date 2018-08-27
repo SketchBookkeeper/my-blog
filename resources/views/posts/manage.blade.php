@@ -37,7 +37,7 @@
                         <div class="mb-2">
                             @foreach($post['tags'] as $tag)
                                 <span class="badge" style="background-color: {{ $tag['color'] }};">
-                                    {{ $tag['name'] }}
+                                    <span class="text-white font-weight-light">{{ $tag['name'] }}</span>
                                 </span>
                             @endforeach
                         </div>
