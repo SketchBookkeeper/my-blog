@@ -17,7 +17,9 @@
 
 <header class="container mb-5 mt-2">
     <div class="row">
-        @include ('admin-partials.nav')
+        @if (Auth::check())
+            @include ('admin-partials.nav')
+        @endif
     </div>
 </header>
 
@@ -25,5 +27,7 @@
     <main class="container">
         @yield('content')
     </main>
+
+    @include('admin-partials.errors')
 </body>
 </html>

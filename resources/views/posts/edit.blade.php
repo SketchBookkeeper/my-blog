@@ -1,8 +1,6 @@
 @extends ('layouts.admin')
 
 @section ('content')
-    @include('admin-partials.errors')
-
     <form method="POST" action="/admin/update/post" class="mb-4">
         {{ csrf_field() }}
 
