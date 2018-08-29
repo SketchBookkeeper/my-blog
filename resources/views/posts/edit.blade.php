@@ -1,7 +1,7 @@
 @extends ('layouts.admin')
 
 @section ('content')
-    <form method="POST" action="/admin/update/post" class="mb-4">
+    <form method="POST" action="/admin/update/post" class="mb-4" id="post">
         {{ csrf_field() }}
 
         <input type="hidden" name="id" value="{{ $post->id }}">
@@ -20,7 +20,7 @@
 
                 <div class="form-group">
                     <label for="post-body">Body</label>
-                    <textarea name="body" id="body" cols="30" rows="10" class="form-control">{{ $post->body }}</textarea>
+                    <input type="hidden" name="body" id="body" value="{{ $post->body }}">
                 </div>
             </div>
 
@@ -46,6 +46,10 @@
                 @endforeach
 
             </div>
+
+            <div class="col-sm-12 mb-5">
+                <div id="editor"></div>
+            </div>
         </div>
 
         <button type="submit" class="btn btn-outline-primary">Update</button>
@@ -58,6 +62,6 @@
         {{ csrf_field() }}
         <input type="hidden" name="id" value="{{ $post->id }}">
 
-        <button class="btn btn-sm btn-outline-danger">Delete {{ $post->title }}</button>
+        <button class="btn btn-sm btn-outline-danger mb-5">Delete {{ $post->title }}</button>
     </form>
 @endsection
