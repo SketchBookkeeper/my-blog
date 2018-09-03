@@ -34,3 +34,6 @@ Route::delete('/admin/delete/tag', 'TagsController@destroy');
 Route::get('/login', 'SessionsController@create')->name('login');
 Route::get('/logout', 'SessionsController@destroy');
 Route::post('/login', 'SessionsController@store');
+
+// Image Upload
+Route::post('/upload', 'MediaController@create');

@@ -20,7 +20,24 @@ if ( content.length >= 1 ) {
             initialValue: content.val(),
             previewStyle: 'vertical',
             exts: ['scrollSync'],
-            height: '90vh'
+            height: '90vh',
+            hooks: {
+                addImageBlobHook: function (blob, callback) {
+                    const fd = new FormData();
+                    fd.append('file', blob);
+
+                    $.ajax({
+                        url: '/upload',
+                        type: 'POST',
+                        processData: false,
+                        contentType: false,
+                        data: fd,
+                        success: function(response) {
+                            callback(response, 'alt text');
+                        }
+                    })
+                }
+            }
         });
     });
 

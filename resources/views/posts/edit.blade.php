@@ -1,7 +1,7 @@
 @extends ('layouts.admin')
 
 @section ('content')
-    <form method="POST" action="/admin/update/post" class="mb-4" id="post">
+    <form method="POST" action="/admin/update/post" enctype="multipart/form-data" class="mb-4" id="post">
         {{ csrf_field() }}
 
         <input type="hidden" name="id" value="{{ $post->id }}">
@@ -9,8 +9,8 @@
         <div class="row">
             <div class="col-sm-12 col-md-9">
                 <div class="form-group">
-                <label for="post-title">Title</label>
-                <input type="text" id="post-title" name="title" value="{{ $post->title }}" class="form-control">
+                    <label for="post-title">Title</label>
+                    <input type="text" id="post-title" name="title" value="{{ $post->title }}" class="form-control">
                 </div>
 
                 <div class="form-group">
