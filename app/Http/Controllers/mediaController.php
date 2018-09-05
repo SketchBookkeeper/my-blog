@@ -7,9 +7,14 @@ use Illuminate\Support\Facades\Storage;
 
 class MediaController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function create(Request $request)
     {
-        // TODO check filetype and auth.
+
 
         // Get the file from the request, and store it
         // $path represents where the file is in the application

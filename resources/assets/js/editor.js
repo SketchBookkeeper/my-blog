@@ -35,7 +35,7 @@ if ( content.length >= 1 ) {
                         success: function(response) {
                             callback(response, 'alt text');
                         }
-                    })
+                    });
                 }
             }
         });
